@@ -51,6 +51,22 @@ class phpList_RESTAPI_Users{
         phpList_RESTAPI_Common::select( 'User', "SELECT * FROM " . $GLOBALS['usertable_prefix'] . "user WHERE email = '$email';", true );
     }
 
+
+    /**
+    * <p> Get user by uid.</p>
+    * <p><strong>Parameters:</strong><br/>
+    * [*uid] {string} the unique Id of the user.<br/>
+    * <p><strong>Returns:</strong><br/>
+    * One user only
+    * </p>
+    */
+
+    static function userGetByUid ($uid=""){
+      if ($uid==0) $uid = $_REQUEST['uid'];
+      phplist_RESTAPI_Common::select('User', "SELECT * FROM " . $GLOBALS['usertable_prefix'] . "user WHERE uniqid = '$uid';", true );
+    }
+
+
     /**
      * <p>Adds one user to the system.</p>
      * <p><strong>Parameters:</strong><br/>
